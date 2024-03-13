@@ -6,7 +6,8 @@ apk update
 
 # install packages
 apk add nano less busybox-extras
-apk add frr frr-openrc
+# apk add frr frr-openrc
+apk add --allow-untrusted /tmp/uploads/frr/3.17/*apk
 rc-update add frr
 
 # enable IP forwarding

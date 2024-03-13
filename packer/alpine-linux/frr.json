@@ -1,4 +1,5 @@
 {
     "vm_name": "frr.qcow2",
+    "file_source": "frr",
     "setup_script": "frr.sh"
 }
