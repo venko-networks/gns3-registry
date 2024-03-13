@@ -37,6 +37,7 @@ jobs:
 
       # This step uses the `run` command to execute a script that is stored in the repository at `script/rendered-content-link-checker.mjs` and passes all the parameters it needs to run.
       - name: Create/Update python venv
+        id: venv
         run: |
           python3 -m venv venv
           source venv/bin/activate
@@ -45,11 +46,13 @@ jobs:
           python3 -m pip install pycurl || true
 
       - name: build FRR apk
+        id: build-apk
         run: |
           cd packer/alpine-linux/files
-          #./docker-apk-build frr 3.17
+          ./docker-apk-build frr 3.17
 
       - name: build QEMU VM
+        id: build-vm
         run: |
           cd packer/alpine-linux
           packer build -var-file=frr.json alpine.json
